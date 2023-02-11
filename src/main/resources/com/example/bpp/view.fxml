@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.ComboBox?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<?import javafx.scene.control.CheckBox?>
+<VBox prefWidth="600" prefHeight="450" xmlns="http://javafx.com/javafx/11.0.1"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bpp.Controller">
+
+
+    <VBox styleClass="root">
+        <Label styleClass="title" fx:id="title" text="Algorytm: First-Fit" textAlignment="CENTER"/>
+        <HBox styleClass="mainHbox" alignment="CENTER">
+            <VBox styleClass="leftPanel">
+                <HBox styleClass="input-container" alignment="BASELINE_LEFT">
+                    <Label styleClass="input-label" text="Wybierz algorytm: "/>
+                    <ComboBox fx:id="comboBox" prefWidth="150.0" value="First-Fit" styleClass="comboBox" >
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="First-Fit"/>
+                                <String fx:value="Next-Fit"/>
+                                <String fx:value="Best-Fit"/>
+                                <String fx:value="Worst-Fit"/>
+                                <String fx:value="Average-Fit"/>
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                </HBox>
+                <HBox styleClass="input-container" alignment="BASELINE_LEFT">
+                    <Label styleClass="input-label" text="Ilość elementów:" />
+                    <TextField styleClass="input-field" fx:id="countElements" promptText="np. 10"/>
+                </HBox>
+                <HBox styleClass="input-container" alignment="BASELINE_LEFT">
+                    <Label styleClass="input-label" text="Wartość min/max:" />
+                    <HBox spacing="10" alignment="BASELINE_LEFT">
+                        <TextField fx:id="minValue" promptText="np. 1" prefWidth="100"/>
+                        <Label text="-" />
+                        <TextField fx:id="maxValue" promptText="np. 20" prefWidth="100"/>
+                    </HBox>
+                </HBox>
+                <HBox styleClass="input-container" alignment="BASELINE_LEFT">
+                    <Label styleClass="input-label" text="Rozmiar pudełek:" />
+                    <TextField styleClass="input-field" fx:id="boxSize" promptText="np. 30"/>
+                </HBox>
+                <HBox styleClass="input-container" alignment="BASELINE_CENTER" spacing="30">
+                    <CheckBox text="Save In DataBase" styleClass="checkBox" fx:id="checkBox"/>
+                    <Button styleClass="button" text="Rozwiąż" onMouseClicked="#solve"></Button>
+                </HBox>
+            </VBox>
+
+            <VBox styleClass="rightPanel">
+                <Canvas fx:id="canvas" width="600" height="380"/>
+            </VBox>
+        </HBox>
+        <HBox spacing="20">
+            <VBox prefWidth="980" spacing="10">
+                <Label styleClass="result-label" text="Wynik:"/>
+                <TextArea styleClass="result-field" fx:id="resultField" editable="false"/>
+            </VBox>
+            <VBox spacing="15" alignment="CENTER">
+                <Button styleClass="button" text="Zapisz do pliku" onMouseClicked="#save"></Button>
+                <Button styleClass="button" text="Wczytaj z pliku" onMouseClicked="#load"></Button>
+            </VBox>
+        </HBox>
+    </VBox>
+</VBox>
