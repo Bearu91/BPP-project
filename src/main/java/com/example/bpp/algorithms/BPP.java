@@ -20,11 +20,12 @@ public class BPP {
     public List<Bin> visualize(Canvas canvas, TextArea result){
         List<Bin> bins = calculate();
 
-        StringBuilder msg = new StringBuilder("Ilość użytych pudełek: "+bins.size()+"\n");
+        StringBuilder msg = new StringBuilder("Czas działania algorytmu: "+executionTime+" ms\n");
+        msg.append("Ilość użytych pudełek: "+bins.size()+"\n");
         for (Bin bin : bins) {
             msg.append("Pudełko Nr: ").append(bin.id).append(", Zajęte Miejsca: ").append(bin.used).append(", Pojemność: ").append(bin.capacity).append("\n");
         }
-        result.setText(result.getText()+msg);
+        result.setText(msg+"");
 
         int x = 0, y = 0;
         GraphicsContext ctx = canvas.getGraphicsContext2D();

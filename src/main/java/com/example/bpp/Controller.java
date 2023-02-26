@@ -46,7 +46,7 @@ public class Controller {
             };
 
             List<Bin> bins = fit.visualize(canvas, resultField);
-            resultField.setText("Czas działania algorytmu: "+fit.executionTime+" ms\n"+resultField.getText());
+
 
             if(checkBox.isSelected()){
                 DBConnection.sendInserts(bins, fit.executionTime);
